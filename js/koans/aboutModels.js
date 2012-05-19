@@ -9,9 +9,9 @@ describe('About Backbone.Model', function() {
         var todo = new Todo();
         
         var defaultAttrs = {
-            text: 'What is the default value?',
-            done : 'What is the default value?',
-            order: 'What is the default value?'
+            text: '',
+            done : false,
+            order: 0
         }
         
         expect(defaultAttrs).toEqual(todo.attributes);
@@ -20,13 +20,14 @@ describe('About Backbone.Model', function() {
     it('Attributes can be set on the model instance when it is created.', function() {
         var todo = new Todo({ text: 'Get oil change for car.' });
         
-        var expectedText = 'FIX ME';
+        var expectedText = 'Get oil change for car.';
         
         expect(expectedText).toEqual(todo.get('text'));
     });
     
     it('If it is exists, an initialize function on the model will be called when it is created.', function() {
-        var todo = new Todo({ text: 'Stop monkeys from throwing their own feces!' });
+//      Todo.NAUGHTY_WORDS = /feces/gi;
+      var todo = new Todo({ text: 'Stop monkeys from throwing their own feces!' });
         
         // Why does the expected text differ from what is passed in when we create the Todo?
         // What is happening in Todo.initialize? (see js/todos.js line 22)
