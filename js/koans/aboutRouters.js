@@ -28,20 +28,20 @@ describe('About Backbone.Router', function() {
     // * http://documentcloud.github.com/backbone/#Router-navigate
     
     it('Routers provide a way to map urls to methods.', function() {
-        router.navigate('FIX ME', true);
+        router.navigate('help', true);
         
         expect(router.help).toHaveBeenCalled();
     });
     
     it('The routes object can do token matching for a given url, passing the matched tokens to the mapped method.', function() {
-        router.navigate('FIX ME', true);
+        router.navigate('search/restaurants/1', true);
         
         expect(router.search).toHaveBeenCalled();
         expect(router.search.mostRecentCall.args).toEqual(['restaurants', '1']);
     });
     
     it('The routes object can also do wildcard matching for a given url, passing the entire matched path to the mapped method.', function() {
-        router.navigate('FIX ME', true);
+        router.navigate('articles/2011/07/01/a_blog_post', true);
         
         expect(router.articles).toHaveBeenCalled();
         expect(router.articles.mostRecentCall.args).toEqual(['2011/07/01/a_blog_post']);
