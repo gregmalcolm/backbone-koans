@@ -15,7 +15,7 @@ describe('About Backbone.View', function() {
     });
     
     it('Views are tied to a DOM element when created, based off the property provided.', function() {
-        var tagName = 'what html element represents this view?';
+        var tagName = 'li';
         
         expect(tagName).toEqual(todoView.tagName)
         expect(tagName).toEqual(todoView.el.tagName.toLowerCase());
@@ -24,6 +24,7 @@ describe('About Backbone.View', function() {
     it('Views are backed by a model instance, which provides the data when rendering the view.', function() {
         // What method would you call on todoView to get this expectation to pass?
         // Hint: You can accomplish this without accessing todoView.model directly.
+        todoView.toggleDone();
         
         expect(todoView.model.get('done')).toBe(true);
     });
@@ -35,7 +36,8 @@ describe('About Backbone.View', function() {
         //       How would you append it to the ul#todoList? 
         //       How do you access the view's DOM representation?
         //
-        // Hint: http://documentcloud.github.com/backbone/#View-el and TodoApp.addOne in todos.js
+        // Hint: http://documentcloud.github.com/backbone/#View-el and TodoApp.addOne in todos.js      
+        $("#todoList").append(todoView.render().el);
         
         expect($('#todoList').find('li').length).toBe(1);
     });
@@ -64,6 +66,7 @@ describe('About Backbone.View', function() {
             //       (See todos.js line 70, where the events hash is defined.)
             //
             // Hint: http://api.jquery.com/click
+            $("#todoList li input.check").click();
             
             expect(todoView.model.toggle).toHaveBeenCalled();
         });
