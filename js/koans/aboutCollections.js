@@ -9,6 +9,8 @@ describe('About Backbone.Collection', function() {
         expect(todos.length).toEqual(1);
         
         // How would you add multiple models to the collection with a single method call?
+        todos.add([{ text: 'Hoover the lawn' },
+                   { text: 'Mow the carpets' }]);
         
         expect(todos.length).toEqual(3);
     });
@@ -23,8 +25,8 @@ describe('About Backbone.Collection', function() {
         //
         // Hint: Could you change attribute values on the todos themselves?
         
-        todos.add([{ text: 'Do the laundry',  order: 4},
-                   { text: 'Clean the house', order: 8},
+        todos.add([{ text: 'Do the laundry',  order: 2},
+                   { text: 'Clean the house', order: 1},
                    { text: 'Take a nap',      order: 3}]);
         
         expect(todos.at(0).get('text')).toEqual('Clean the house');
@@ -41,7 +43,8 @@ describe('About Backbone.Collection', function() {
         var addModelCallback = jasmine.createSpy('-add model callback-');
         todos.bind('add', addModelCallback);
         
-        // How would you get both expectations to pass with a single method call?
+        // How would you get both expectations to pass with a single method call?        
+        todos.add({ task: 'Hoover the cat' });
         
         expect(todos.length).toEqual(1);
         expect(addModelCallback).toHaveBeenCalled();
@@ -50,6 +53,7 @@ describe('About Backbone.Collection', function() {
         todos.bind('remove', removeModelCallback);
         
         // How would you get both expectations to pass with a single method call?
+        todos.remove(todos.at(0));
         
         expect(todos.length).toEqual(0);
         expect(removeModelCallback).toHaveBeenCalled();
