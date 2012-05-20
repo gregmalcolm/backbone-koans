@@ -1,0 +1,23 @@
+Notes:
+
+Making some notes as I work through the koans in case I decide to contribute back
+
+- SpecRunner doesn't tell you whats going wrong if you load it as static html
+- Specrunner says "/koans" but code is in "/js/koans
+
+Events
+- bind is now on, following jqueries example
+- line 72 obj.bind('an_event', changeColor, -->this<-- would be a nice clue);
+
+Models
+- expectedText - wrong way around
+- Could use a hint on how to add feces to naughty_words list
+- Needs more koans
+
+Collection
+- Shows 4 completed items from the start
+- Needs more koans
+
+Views
+- expected - wrong way around
+- change '#todoList' '#todo-list'
